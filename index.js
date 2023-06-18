@@ -92,8 +92,8 @@ console.log(degerlendirmeler[5].geribildirim);
 	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
-degerlendirmeler[7].geribildirim = "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
-console.log(degerlendirmeler[degerlendirmeler.length-1].geribildirim);
+degerlendirmeler[7].geribildirim = "Bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
+console.log("Reyna'nın geri bildirimi:" , degerlendirmeler[degerlendirmeler.length-1].geribildirim);
 
 
 /*  Görev 5: 
@@ -129,7 +129,13 @@ DegerledirmeEkle(degerlendirmeler, 'Hurşut', 2, 'Boktan yemekler!')
 	Örnek: AnahtardanDegerlendirmeAl(degerlendirmeler,0) şunu döndürmeli: "Nalan isimli kişi 5 puan verdi ve şunları yazdı: Mükemmel atmosfer ve mükemmel vegan seçenekleri!"
 */
 
+function AnahtardanDegerlendirmeAl(dizi,anahtar) {
+	const kisi = dizi[anahtar]
+	return `${kisi.isim} isimli kişi ${kisi.puan} puan verdi ve şunları yazdı: ${kisi.geribildirim}`
+}
 
+console.log(AnahtardanDegerlendirmeAl(degerlendirmeler,0))
+console.log(AnahtardanDegerlendirmeAl(degerlendirmeler,2))
 
 
 
@@ -147,9 +153,11 @@ DegerledirmeEkle(degerlendirmeler, 'Hurşut', 2, 'Boktan yemekler!')
 */
 
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function SonDegerlendirmeyiAl(dizi) {
+	const son = dizi[dizi.length - 1];
+    return `${son.isim} isimli kişi ${son.puan} puan verdi ve şunları yazdı: ${son.geribildirim}`
 } 
+console.log(SonDegerlendirmeyiAl(degerlendirmeler));
 
 
 
@@ -169,9 +177,19 @@ function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
 	]
 */
 
-function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
-    /* Kodlar buraya */
+function PuanaGoreDegerlendirmeAl(dizi, puan) {
+	const altlimit = Math.floor(puan);
+	const yenidizi = [];
+	for (let i = 0; i < dizi.length; i++) {
+		let degerlendirme = dizi[i];
+		if (degerlendirme.puan >= altlimit && degerlendirme.puan < altlimit + 1){
+			yenidizi.push(degerlendirme);
+		}
+	}
+	return yenidizi
 }
+
+console.log(PuanaGoreDegerlendirmeAl(degerlendirmeler, 4));
 
 
 /*  BONUS 2:    
